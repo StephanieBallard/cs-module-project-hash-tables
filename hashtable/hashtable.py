@@ -10,7 +10,7 @@ class HashTableEntry:
 
 # Hash table can't have fewer than this many slots
 MIN_CAPACITY = 8
-
+# table = [None] * 8
 
 class HashTable:
     """
@@ -22,7 +22,12 @@ class HashTable:
 
     def __init__(self, capacity):
         # Your code here
-
+        if capacity < 8:
+            self.capacity = MIN_CAPACITY
+        else:
+            self.capacity = capacity
+        
+        
 
     def get_num_slots(self):
         """
@@ -35,6 +40,8 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        value = HashTable(MIN_CAPACITY)
+        return value % len(HashTable)
 
 
     def get_load_factor(self):
@@ -63,6 +70,11 @@ class HashTable:
         Implement this, and/or FNV-1.
         """
         # Your code here
+        hashsum = 0
+        for idx, c in enumerate(key):
+            hashsum += (idx + len(key)) ** ord(c)
+            hashsum = hashsum % self.capacity
+        return hashsum
 
 
     def hash_index(self, key):
@@ -82,6 +94,11 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        # index = get_num_slots(key)
+        # table[index] = value
+       
+    
+        
 
 
     def delete(self, key):
@@ -93,6 +110,11 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        if self.get(key):
+            self.put(key, None)
+            self.count -= 1
+        else:
+            print("Key was not located")
 
 
     def get(self, key):
