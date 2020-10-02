@@ -35,7 +35,7 @@ FNV-1 (64 bit) hashing functions, there are no collisions.
 Task: Implement linked-list chaining for collision resolution.
 
 1. Modify `put()`, `get()`, and `delete()` methods to handle collisions.
-
+*** only increase the count of the size of the hash table if u are inserting in the put func
 2. There is no step 2.
 
 You can test this with:
